@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:maxHeight="?attr/actionBarSize"
+    android:minHeight="?attr/actionBarSize"
+    android:theme="@style/AppTheme">
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="@dimen/toolbar_button_width"
+            android:layout_height="@dimen/toolbar_button_height"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="@dimen/toolbar_button_margin_right"
+            android:background="@drawable/toolbar_button_send"
+            android:text="@string/toolbar_send"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/toolbar_button_text_size"
+            />
+
+
+</android.support.v7.widget.Toolbar>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">album</string>
+    <string name="toolbar_send">发送</string>
+    <string name="pictures_videos">图片和视频</string>
+    <string name="ogrigin_picture">原图</string>
+    <string name="preview">预览</string>
 </resources>
