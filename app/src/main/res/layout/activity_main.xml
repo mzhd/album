@@ -1,112 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/fl_main"
+    >
 
-    <include layout="@layout/common_toolbar"/>
-
-    <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/container"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_content"
+
+        <include layout="@layout/common_toolbar" />
+
+        <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/black"
-            android:scrollbars="vertical">
-
-        </android.support.v7.widget.RecyclerView>
-
-        <android.support.design.widget.CoordinatorLayout
-            android:id="@+id/coordinator"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:fitsSystemWindows="true">
 
-            <View
-                android:id="@+id/touch_outside"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/popup_view_back"
-                android:importantForAccessibility="no"
-                android:soundEffectsEnabled="false"
-                android:visibility="gone"
-                tools:ignore="UnusedAttribute" />
+                android:background="@android:color/black"
+                android:scrollbars="vertical">
 
-            <FrameLayout
-                android:id="@+id/design_bottom_sheet"
-                style="?attr/bottomSheetStyle"
+            </android.support.v7.widget.RecyclerView>
+
+            <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/coordinator"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal|top"
-                app:layout_behavior="@string/bottom_sheet_behavior">
+                android:fitsSystemWindows="true">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_popwindow_content"
+                <View
+                    android:id="@+id/touch_outside"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="60dp"
-                    android:background="@android:color/white"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="7dp"
-                    android:scrollbars="vertical"/>
+                    android:background="@color/popup_view_back"
+                    android:importantForAccessibility="no"
+                    android:soundEffectsEnabled="false"
+                    android:visibility="gone"
+                    tools:ignore="UnusedAttribute" />
 
-            </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/design_bottom_sheet"
+                    style="?attr/bottomSheetStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal|top"
+                    app:layout_behavior="@string/bottom_sheet_behavior">
 
-        </android.support.design.widget.CoordinatorLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_popwindow_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="60dp"
+                        android:background="@android:color/white"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="7dp"
+                        android:scrollbars="vertical" />
 
-    </FrameLayout>
+                </FrameLayout>
+
+            </android.support.design.widget.CoordinatorLayout>
+
+        </FrameLayout>
 
 
-    <RelativeLayout
-        android:id="@+id/rv_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_material_dark">
-
-        <TextView
-            android:id="@+id/tv_classify"
-            style="@style/content_textview"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/rv_bottom"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:padding="12dp"
-            android:text="@string/pictures_videos"
-            android:textColor="@drawable/text_view" />
+            android:background="@color/primary_material_dark">
 
-        <RadioButton
-            android:id="@+id/rb_origin_picture"
-            style="@style/content_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@null"
-            android:padding="12dp"
-            android:text="@string/ogrigin_picture"
-            android:textColor="@drawable/text_view" />
+            <TextView
+                android:id="@+id/tv_classify"
+                style="@style/content_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="12dp"
+                android:text="@string/pictures_videos"
+                android:textColor="@drawable/text_view" />
 
-        <TextView
-            android:id="@+id/tv_preview"
-            style="@style/content_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:padding="12dp"
-            android:text="@string/preview"
-            android:textColor="@android:color/darker_gray" />
-    </RelativeLayout>
+            <RadioButton
+                android:id="@+id/rb_origin_picture"
+                style="@style/content_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:padding="12dp"
+                android:text="@string/ogrigin_picture"
+                android:textColor="@drawable/text_view" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tv_preview"
+                style="@style/content_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="12dp"
+                android:text="@string/preview"
+                android:textColor="@android:color/darker_gray" />
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>

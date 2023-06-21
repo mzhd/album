@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_material_dark"
+    android:clickable="true"
+    android:orientation="vertical">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    </android.support.v4.view.ViewPager>
+
+    <include layout="@layout/common_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:id="@+id/ll_bottom"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="@color/primary_material_dark"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"
+            android:background="@android:color/darker_gray"></View>
+        <RelativeLayout
+            android:id="@+id/rv_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_material_dark">
+
+            <TextView
+                android:id="@+id/tv_edit"
+                style="@style/content_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="12dp"
+                android:text="@string/preview_edit"
+                android:textColor="@drawable/text_view" />
+
+            <RadioButton
+                android:id="@+id/rb_origin_picture"
+                style="@style/content_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:padding="12dp"
+                android:text="@string/ogrigin_picture"
+                android:textColor="@drawable/text_view" />
+
+            <CheckBox
+                android:id="@+id/cb_check"
+                style="@style/content_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="12dp"
+                android:text="@string/preview_check"
+                android:textColor="@android:color/white"
+                android:background="@null"/>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

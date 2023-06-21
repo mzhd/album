@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="match_parent"
+android:id="@+id/fly"
+    >
+<ImageView
+    android:id="@+id/iv_rv_preview"
+    android:layout_width="@dimen/iv_preview_width"
+    android:layout_height="@dimen/iv_preview_height"
+    android:layout_marginRight="20dp"
+
+    />
+    <View
+        android:id="@+id/view_shade"
+        android:layout_width="@dimen/iv_preview_height"
+        android:layout_height="@dimen/iv_preview_height"
+        />
+</FrameLayout>

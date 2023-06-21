@@ -1,38 +1,22 @@
 package com.mzyl.album;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 
-import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.PicassoProvider;
-import com.squareup.picasso.RequestCreator;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.nio.file.attribute.PosixFileAttributes;
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.crypto.spec.IvParameterSpec;
-
-import static android.widget.ImageView.ScaleType.CENTER_INSIDE;
 
 public class RecyclerViewContentAdapter extends RecyclerView.Adapter {
     private Context context;
@@ -59,15 +43,17 @@ public class RecyclerViewContentAdapter extends RecyclerView.Adapter {
             final ImageView item = ((MyHolder) holder).iv_item;
             ImageEntry entry = (ImageEntry) datas.get(position);
             Picasso.get().load(new File(entry.getData())).tag("content").fit().into(item);
-
-            if (((MainActivity) context).checkedDatas.contains(datas.get(position))) {
-                ((MyHolder) holder).cBox.setChecked(true);
+            item.setOnClickListener(new MyOnclickListener(position));
+            if (((MainActivity)context).checkedDatasPosition.contains(position)) {
                 holder.itemView.findViewById(R.id.overlay).setVisibility(View.VISIBLE);
+                ((MyHolder) holder).cBox.setChecked(true);
             } else {
-                ((MyHolder) holder).cBox.setChecked(false);
                 holder.itemView.findViewById(R.id.overlay).setVisibility(View.GONE);
+                ((MyHolder) holder).cBox.setChecked(false);
             }
+
             ((MyHolder) holder).cBox.setOnClickListener(new MyOnclickListener(position));
+
         }
     }
 
@@ -104,30 +90,32 @@ public class RecyclerViewContentAdapter extends RecyclerView.Adapter {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
+                case R.id.iv_item:
+                    MainActivity activity = (MainActivity) RecyclerViewContentAdapter.this.context;
+                    Intent intent = new Intent(activity, PreviewActivity.class);
+                    intent.putExtra("position", position);
+                    intent.putExtra("isPreview", false);
+                    intent.putParcelableArrayListExtra("data", (ArrayList<? extends Parcelable>) datas);
+                    intent.putParcelableArrayListExtra("checked", (ArrayList<? extends Parcelable>) activity.checkedDatasPosition);
+                    activity.startActivityForResult(intent, MainActivity.REQUEST_CODE_PREVIEW);
+                    break;
                 case R.id.cBox:
+                    activity = (MainActivity) RecyclerViewContentAdapter.this.context;
                     boolean checked = ((CheckBox) v).isChecked();
                     if (checked) {
-                        if (!((MainActivity) context).checkedDatas.contains(datas.get(position)))
-                            ((MainActivity) context).checkedDatas.add(datas.get(position));
-                        ((View)v.getParent()).findViewById(R.id.overlay).setVisibility(View.VISIBLE);
+                        ((View) v.getParent()).findViewById(R.id.overlay).setVisibility(View.VISIBLE);
+                        activity.checkedDatasPosition.add(position);
 
                     } else {
-                        if (((MainActivity) context).checkedDatas.contains(datas.get(position)))
-                            ((MainActivity) context).checkedDatas.remove(datas.get(position));
-                        ((View)v.getParent()).findViewById(R.id.overlay).setVisibility(View.GONE);
-
+                        activity.checkedDatasPosition.remove(activity.checkedDatasPosition.indexOf(position));
+                        ((View) v.getParent()).findViewById(R.id.overlay).setVisibility(View.GONE);
                     }
-                    ((Button) ((MainActivity) context).findViewById(R.id.btn_send)).setText("发送(" + ((MainActivity) context).checkedDatas.size() + "/9)");
-                    if (((MainActivity) context).checkedDatas.size() == 0) {
-                        ((Button) ((MainActivity) context).findViewById(R.id.btn_send)).setText("发送");
-                        ( ((MainActivity) context).findViewById(R.id.btn_send)).setBackgroundColor(context.getResources().getColor(android.R.color.holo_green_dark));
-
-                    } else {
-                        (((MainActivity) context).findViewById(R.id.btn_send)).setBackgroundColor(Color.GREEN);
-
-                    }
+                    activity.updateView();
                     break;
             }
         }
     }
+
+
+
 }

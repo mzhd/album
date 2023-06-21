@@ -12,6 +12,15 @@
         <item name="actionMenuTextColor">@android:color/white</item>
 
     </style>
+    <style name="Activity" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/fade</item>
+    </style>
+    <style name="fade" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/preview_activity_enter_anim</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@anim/preview_activity_exit_anim</item>
+    </style>
     <style name="TextAppearance">
         <item name="android:textSize">@dimen/text_size_title_toolbar</item>
         <item name="android:textColor">@android:color/white</item>
@@ -41,7 +50,8 @@
         <item name="android:scrollbarSize">50dp</item>
     </style>
 
-    <style name="popupwindow_animation_style">
+    <style name="popupwindow_animation_style" >
+        <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
         <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
     </style>

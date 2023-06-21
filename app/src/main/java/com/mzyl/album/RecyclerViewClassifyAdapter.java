@@ -2,12 +2,10 @@ package com.mzyl.album;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -19,8 +17,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import javax.crypto.spec.PSource;
 
 public class RecyclerViewClassifyAdapter extends RecyclerView.Adapter {
     private Context context;
@@ -58,15 +54,20 @@ public class RecyclerViewClassifyAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MyHolder) {
             MyHolder myHolder = (MyHolder) holder;
-            ImageEntry entry = (ImageEntry) ((List) mapDatas.get(keys.get(position))).get(0);
-            Picasso.get().load(new File(entry.getData())).fit().into(myHolder.iv_thumbnail);
+            List list = (List) mapDatas.get(keys.get(position));
+
+            if (list!=null&&list.size()!=0)
+            {
+                ImageEntry   entry = (ImageEntry) (list).get(0);
+                Picasso.get().load(new File(entry.getData())).fit().into(myHolder.iv_thumbnail);
+            }
             myHolder.tv_classify_title.setText((CharSequence) keys.get(position));
             if (position == 0) {
                 myHolder.tv_classify_count.setVisibility(View.INVISIBLE);
             }else{
                 myHolder.tv_classify_count.setVisibility(View.VISIBLE);
             }
-            myHolder.tv_classify_count.setText("" + ((List) mapDatas.get(keys.get(position))).size()+"张");
+            myHolder.tv_classify_count.setText("" + (list).size()+"张");
             myHolder.itemView.setOnClickListener(new MyOnClickListener(position));
             if (position==checkedPosition){
                 myHolder.rb_classify.setVisibility(View.VISIBLE);

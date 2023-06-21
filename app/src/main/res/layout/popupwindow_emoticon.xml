@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lly_emoticon_main"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_alignParentBottom="true"
+    android:background="@color/white"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:visibility="invisible">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <com.mzyl.album.CustomViewPager
+            android:id="@+id/vp_emoticon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.mzyl.album.CustomViewPager>
+
+        <RelativeLayout
+            android:id="@+id/fl_sign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:id="@+id/lly_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="horizontal" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_emoticon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <com.mzyl.album.CustomRadioButton
+            android:id="@+id/rb_tuzi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/black_background"
+            android:button="@null"
+            android:checked="true"
+            android:drawableStart="@drawable/radiobutton_tuzi_selector"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"/>
+
+        <com.mzyl.album.CustomRadioButton
+            android:id="@+id/rb_baozou"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableStart="@drawable/radiobutton_baozou_selector"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"/>
+
+        <com.mzyl.album.CustomRadioButton
+            android:id="@+id/rb_liumangtu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableStart="@drawable/radiobutton_liumangtu_selector"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"/>
+
+        <com.mzyl.album.CustomRadioButton
+            android:id="@+id/rb_houzi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableStart="@drawable/radiobutton_houzi_selector"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"/>
+
+        <com.mzyl.album.CustomRadioButton
+            android:id="@+id/rb_heart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableStart="@drawable/radiobutton_red_heart_selector"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"/>
+
+        <com.mzyl.album.CustomRadioButton
+            android:id="@+id/rb_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableStart="@drawable/radiobutton_back_selector"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"/>
+    </RadioGroup>
+</LinearLayout>

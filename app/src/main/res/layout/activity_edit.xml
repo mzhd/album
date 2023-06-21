@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_edit"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_material_dark"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <com.mzyl.album.CustomImageView2
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_rubbish"
+            style="@style/content_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:drawableTop="@drawable/rubbish"
+            android:text="拖动此处删除"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_option_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/content_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="20dp"
+            android:text="@string/edit_tv_cancel" />
+
+        <TextView
+            android:id="@+id/tv_finish"
+            style="@style/content_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="20dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="20dp"
+            android:text="@string/edit_tv_finish"
+            android:textColor="@android:color/holo_green_dark" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/option_back"
+            android:clickable="true"
+            android:orientation="vertical"
+
+            >
+
+            <LinearLayout
+                android:id="@+id/lly_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="invisible">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:id="@+id/lly_option_pen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:visibility="invisible" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_option_mosaic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:visibility="invisible">
+
+                        <com.mzyl.album.CustomRadioButton
+                            android:id="@+id/rb_mosaic"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:button="@null"
+                            android:drawableStart="@drawable/radiobutton_mosaic_selector"
+                            android:gravity="center" />
+
+                        <com.mzyl.album.CustomRadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:button="@null"
+                            android:drawableStart="@drawable/radiobutton_mosaic_selector"
+                            android:gravity="center" />
+
+                    </RadioGroup>
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/iv_step_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="20dp"
+                    android:src="@drawable/step_back_selector" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rg_tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp">
+
+                <com.mzyl.album.CustomCheckBox
+                    android:id="@+id/cb_pen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawableStart="@drawable/radiobutton_pen_selector"
+                    android:gravity="center" />
+
+                <com.mzyl.album.CustomCheckBox
+                    android:id="@+id/cb_emoticon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawableStart="@drawable/radiobutton_emoticon_selector"
+                    android:gravity="center" />
+
+                <com.mzyl.album.CustomCheckBox
+                    android:id="@+id/cb_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawableStart="@drawable/radiobutton_text_selector"
+                    android:gravity="center" />
+
+                <com.mzyl.album.CustomCheckBox
+                    android:id="@+id/cb_mosaic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawableStart="@drawable/radiobutton_mosaic_selector"
+                    android:gravity="center" />
+
+                <com.mzyl.album.CustomCheckBox
+                    android:id="@+id/cb_cut"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawableStart="@drawable/radiobutton_cut_selector"
+                    android:gravity="center" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include layout="@layout/popupwindow_emoticon" />
+
+    <LinearLayout
+        android:id="@+id/lly_option_cut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:clickable="true"
+        >
+
+        <ImageView
+            android:id="@+id/iv_rotate_90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="15dp"
+            android:src="@drawable/rotate_90" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:id="@+id/iv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:src="@drawable/cross_selector" />
+
+            <TextView
+                android:id="@+id/tv_restore"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="还原"
+                android:textColor="@drawable/textview_restore_selector"
+                android:gravity="center"/>
+
+            <ImageView
+                android:id="@+id/iv_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:src="@drawable/tick_selector" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -23,12 +23,13 @@ public class MyTask extends AsyncTask<String, String, List<ImageEntry>> {
     @Override
     protected List<ImageEntry> doInBackground(String... strings) {
         ContentResolver contentResolver = context.getContentResolver();
-        Cursor query = contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
+        Cursor query = contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Images.ImageColumns.DATE_ADDED);
 
         if (context instanceof MainActivity) {
             mapDatas = ((MainActivity) context).mapDatas;
         }
-        List<ImageEntry> images = new ArrayList<>();
+        List<ImageEntry> images = ((MainActivity) context).datas;
+
         while (query != null && query.moveToNext()) {
             ImageEntry image = new ImageEntry();
             //文件名
@@ -52,7 +53,8 @@ public class MyTask extends AsyncTask<String, String, List<ImageEntry>> {
             //日期
             long data_add = query.getLong(query.getColumnIndex(MediaStore.Images.ImageColumns.DATE_ADDED));
             image.setData_add(data_add);
-            images.add(image);
+
+            images.add(0,image);
             mapDatas.put(bucket_displaye_name, null);
 
         }
